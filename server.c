@@ -10,7 +10,7 @@
  
 int main(void)
 {
-  int listenfd = 0,connfd = 0;
+  int listenfd = 0,connfd = 0; 
   
   struct sockaddr_in serv_addr;
  
@@ -39,7 +39,7 @@ int main(void)
   
   while(1)
     {
-      printf("TEST1!\n");
+      printf("TEST0!\n");
       connfd = accept(listenfd, (struct sockaddr*)NULL ,NULL); // accept awaiting request
       printf("TEST2!\n");
       read(listenfd, recvBuff, sizeof(recvBuff)-1);
