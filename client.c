@@ -38,6 +38,7 @@ int main(void)
       recvBuff[n] = 0;
       printf("Enter message: \n");
       gets(sendBuff);
+      send(sockfd,sendBuff,strlen(sendBuff),0);
       if(fputs(recvBuff, stdout) == EOF)
     {
       printf("\n Error : Fputs error");
