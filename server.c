@@ -39,9 +39,9 @@ int main(void)
   
   while(1)
     {
-      
+      printf("TEST1!\n");
       connfd = accept(listenfd, (struct sockaddr*)NULL ,NULL); // accept awaiting request
-      printf("TEST!\n");
+      printf("TEST2!\n");
       read(listenfd, recvBuff, sizeof(recvBuff)-1);
       if(strcmp(recvBuff,"Hi")) {
         strcpy(sendBuff, "Bye");
