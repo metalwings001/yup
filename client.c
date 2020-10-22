@@ -39,7 +39,7 @@ int main(void)
     {
       recvBuff[n] = 0;
       printf("Enter message: \n");
-      fgets(sendBuff, sizeof(sendBuff));
+      fgets(sendBuff, sizeof(sendBuff),stdin);
       send(sockfd,sendBuff,strlen(sendBuff),0);
       if(fputs(recvBuff, stdout) == EOF)
     {
