@@ -15,7 +15,9 @@ int main(void)
   char recvBuff[1024];
   char sendBuff[1024];
   struct sockaddr_in serv_addr;
- 
+
+  struct hostent *hen;
+
   memset(recvBuff, '0' ,sizeof(recvBuff));
   if((sockfd = socket(AF_INET, SOCK_STREAM, 0))< 0)
     {
@@ -24,8 +26,8 @@ int main(void)
     }
  
   serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(5000);
-  serv_addr.sin_addr.s_addr = inet_addr("10.0.2.15");
+  serv_addr.sin_port = 53;
+  serv_addr.sin_addr.s_addr = gethostbyname("server.justin.cs164")->h_addr;
  
   if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr))<0)
     {
@@ -37,7 +39,7 @@ int main(void)
     {
       recvBuff[n] = 0;
       printf("Enter message: \n");
-      fgets(sendBuff, sizeof(sendBuff),stdin);
+      fgets(sendBuff, sizeof(sendBuff));
       send(sockfd,sendBuff,strlen(sendBuff),0);
       if(fputs(recvBuff, stdout) == EOF)
     {
