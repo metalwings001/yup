@@ -41,7 +41,7 @@ int main(void)
     {
       
       connfd = accept(listenfd, (struct sockaddr*)NULL ,NULL); // accept awaiting request
-
+      printf("TEST!\n");
       read(listenfd, recvBuff, sizeof(recvBuff)-1);
       if(strcmp(recvBuff,"Hi")) {
         strcpy(sendBuff, "Bye");
