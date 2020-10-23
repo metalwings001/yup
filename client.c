@@ -27,7 +27,7 @@ int main(void)
  
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_port = 53;
-  serv_addr.sin_addr.s_addr = gethostbyname("server.justin.cs164")->h_addr;
+  serv_addr.sin_addr.s_addr = gethostbyname("server.justin.cs164").h_addr;
  
   if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr))<0)
     {
