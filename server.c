@@ -8,7 +8,8 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
- 
+#include <netdb.h>
+
 int main(void)
 {
   int listenfd = 0,connfd = 0; 
