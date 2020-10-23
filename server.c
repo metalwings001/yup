@@ -21,7 +21,7 @@ int main(void)
   int numrv;  
 
   
-  hen = gethostbyname("server.justin.cs164");
+  hen = gethostbyname("justin.cs164");
  
   listenfd = socket(AF_INET, SOCK_STREAM, 0);
   printf("socket retrieve success\n");
