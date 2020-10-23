@@ -7,18 +7,20 @@
 #include <errno.h>
 #include <string.h>
 #include <sys/types.h>
+#include <unistd.h>
  
 int main(void)
 {
   int listenfd = 0,connfd = 0; 
   
   struct sockaddr_in serv_addr;
- 
+  struct hostent *hen;
+
   char sendBuff[1025];  
   char recvBuff[1025]; 
   int numrv;  
 
-  struct hostent *hen;
+  
   hen = gethostbyname("server.justin.cs164");
  
   listenfd = socket(AF_INET, SOCK_STREAM, 0);
