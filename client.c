@@ -17,7 +17,7 @@ int main(void)
   struct sockaddr_in serv_addr;
 
   struct hostent *hen;
-  hen = gethostbyname("server.justin.cs164");
+  hen = gethostbyname("localhost");
 
 
 
