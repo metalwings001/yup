@@ -17,6 +17,9 @@ int main(void)
   char sendBuff[1025];  
   char recvBuff[1025]; 
   int numrv;  
+
+  struct hostent *hen;
+  hen = gethostbyname("server.justin.cs164");
  
   listenfd = socket(AF_INET, SOCK_STREAM, 0);
   printf("socket retrieve success\n");
@@ -26,8 +29,8 @@ int main(void)
   memset(recvBuff, '0', sizeof(recvBuff));
       
   serv_addr.sin_family = AF_INET;    
-  serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); 
   serv_addr.sin_port = htons(5000);    
+  bcopy((char *)hen->h_addr,(char *)&serv_addr.sin_addr.s_addr,hen->h_length);
  
   bind(listenfd, (struct sockaddr*)&serv_addr,sizeof(serv_addr));
   
