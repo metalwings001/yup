@@ -17,6 +17,9 @@ int main(void)
   struct sockaddr_in serv_addr;
 
   struct hostent *hen;
+  hen = gethostbyname("server.justin.cs164");
+
+
 
   memset(recvBuff, '0' ,sizeof(recvBuff));
   if((sockfd = socket(AF_INET, SOCK_STREAM, 0))< 0)
@@ -26,8 +29,8 @@ int main(void)
     }
  
   serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = 53;
-  serv_addr.sin_addr.s_addr = gethostbyname("server.justin.cs164").h_addr;
+  serv_addr.sin_port = htons(5000);
+  bcopy((char *)hen->h_addr,(char *)&saddr.sin_addr.s_addr,hen->h_length);
  
   if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr))<0)
     {
