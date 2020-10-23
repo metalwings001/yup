@@ -23,8 +23,8 @@ int main(void)
 
   
   hen = gethostbyname("server.justin.cs164");
-  printf("%s\n",hen.addr);
-  
+  printf("%s\n",hen->addr);
+
   listenfd = socket(AF_INET, SOCK_STREAM, 0);
   printf("socket retrieve success\n");
   
