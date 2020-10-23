@@ -57,7 +57,7 @@ int main(void)
       else if(strcmp(recvBuff,"Bye")) {
         strcpy(sendBuff, "Hi");
       }
-      write(connfd, sendBuff, strlen(sendBuff));
+      write(connfd, recvBuff, strlen(sendBuff));
  
       close(connfd);    
       sleep(1);
