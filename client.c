@@ -30,8 +30,9 @@ int main(void)
  
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_port = htons(5000);
-  //bcopy((char *)hen->h_addr,(char *)&serv_addr.sin_addr.s_addr,hen->h_length);
- serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+  serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+  bcopy((char *)hen->h_addr,(char *)&serv_addr.sin_addr.s_addr,hen->h_length);
+
   if(connect(sockfd, (struct sockaddr *)&serv_addr, sizeof(serv_addr))<0)
     {
       printf("\n Error : Connect Failed \n");
