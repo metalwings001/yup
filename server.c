@@ -23,7 +23,7 @@ int main(void)
 
   
   hen = gethostbyname("server.justin.cs164");
-  printf("%s\n",hen->h_addr);
+  printf("address: %s\n",inet_ntoa(hen->h_addr));
 
   listenfd = socket(AF_INET, SOCK_STREAM, 0);
   printf("socket retrieve success\n");
@@ -34,8 +34,8 @@ int main(void)
       
   serv_addr.sin_family = AF_INET;    
   serv_addr.sin_port = htons(5000);    
-  //bcopy((char *)hen->h_addr,(char *)&serv_addr.sin_addr.s_addr,hen->h_length);
-  serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+  bcopy((char *)hen->h_addr,(char *)&serv_addr.sin_addr.s_addr,hen->h_length);
+  //serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
   bind(listenfd, (struct sockaddr*)&serv_addr,sizeof(serv_addr));
   
